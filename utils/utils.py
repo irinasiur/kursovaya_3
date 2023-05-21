@@ -90,6 +90,8 @@ def card_hide(card):
 
 
 def output(transaction):
+    """Выводит необходимую информацию в требуемом формате.
+    """
     print(f'{datetime.strptime(transaction.date, "%Y-%m-%dT%H:%M:%S.%f").strftime("%d.%m.%Y")} Перевод организации\n'
           f'{card_hide(transaction.from_field)} -> Счет {account_hide(transaction.to)}\n'
           f'{transaction.operationAmount_amount} {transaction.operationAmount_currency_name}\n '
