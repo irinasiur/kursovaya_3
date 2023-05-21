@@ -1,7 +1,7 @@
 import json
 import requests as requests
-from transaction import Transaction
-from constants import JSON_DATA_PATH
+from utils.transaction import Transaction
+from utils.constants import JSON_DATA_PATH
 import re
 
 
