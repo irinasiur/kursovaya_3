@@ -1,8 +1,4 @@
-from utils.utils import sorted_by_datetime, card_hide
+from utils.utils import output, sorted_by_datetime
 
-print(card_hide(sorted_by_datetime()[0].to))
-
-
-
-
-
+for l in reversed(range(len(sorted_by_datetime()))):
+    output(sorted_by_datetime()[l])

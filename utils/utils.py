@@ -1,4 +1,6 @@
 import json
+from datetime import datetime
+
 import requests as requests
 from utils.transaction import Transaction
 from utils.constants import JSON_DATA_PATH
@@ -86,3 +88,9 @@ def card_hide(card):
 
     return name_card + private_number
 
+
+def output(transaction):
+    print(f'{datetime.strptime(transaction.date, "%Y-%m-%dT%H:%M:%S.%f").strftime("%d.%m.%Y")} Перевод организации\n'
+          f'{card_hide(transaction.from_field)} -> Счет {account_hide(transaction.to)}\n'
+          f'{transaction.operationAmount_amount} {transaction.operationAmount_currency_name}\n '
+          f'')
