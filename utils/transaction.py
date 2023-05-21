@@ -1,4 +1,4 @@
-class Transaction():
+class Transaction:
     def __init__(self, trans_id, state, date, operationAmount_amount,
                  operationAmount_currency_name, operationAmount_currency_code, description, from_field, to):
         self.id = trans_id

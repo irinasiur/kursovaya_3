@@ -7,10 +7,10 @@ from utils.constants import JSON_DATA_PATH
 import re
 
 
-def get_transactions():
-    """Получает данные с внешнего ресурса,передает их в класс trasaction.
+def get_transactions(input_json):
+    """Получает данные с внешнего ресурса, передает их в класс transaction.
      """
-    json_path = JSON_DATA_PATH
+    json_path = input_json  #JSON_DATA_PATH
     user_transactions = []
     raw_data = requests.get(json_path)
     data = json.loads(raw_data.text)
@@ -40,27 +40,26 @@ def get_transactions():
                 "not found",
                 "not found",
             )
-        # print(transaction.__repr__)
         user_transactions.append(transaction)
 
     return user_transactions
 
 
-def get_executed_only():
+def get_executed_only(input_json):
     """Выбирает только выполненные клиентом операции.
     """
     executed_only = []
-    for entry in get_transactions():
+    for entry in get_transactions(input_json):
         if entry.state == "EXECUTED":
             executed_only.append(entry)
 
     return executed_only
 
 
-def sorted_by_datetime():
+def sorted_by_datetime(input_json):
     """Сортирует выполненные клиентом операции по дате и времени и возвращает последние 5 операций.
     """
-    list_to_sort = get_executed_only()
+    list_to_sort = get_executed_only(input_json)
     temp_dictionary = {}
     for entry in list_to_sort:
         temp_dictionary[entry] = entry.date
